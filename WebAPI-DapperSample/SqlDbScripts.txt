@@ -1,0 +1,50 @@
+﻿USE [TestData]
+GO
+
+/****** Object:  Table [dbo].[Person]    Script Date: 06/01/2021 5:25:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Person](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NULL,
+	[Phone] [varchar](50) NULL,
+	[Email] [varchar](50) NULL,
+ CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+-- =============================================
+CREATE PROCEDURE sp_Person_GetALL  
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Select * from Person 
+
+END
+GO
+
+CREATE PROCEDURE sp_Person_GetById  
+	-- Add the parameters for the stored procedure here
+	@Id int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Select * from Person where id = @Id
+
+END
+GO
